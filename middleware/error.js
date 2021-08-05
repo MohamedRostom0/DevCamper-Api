@@ -1,7 +1,8 @@
 const ErrorResponce = require("../utils/errorResponce");
 
-const errorHandler = (err, req, res, next) => {
-    let error = { ...err } // Deep-cloning err
+//Middleware of handling errors
+const errorHandler = (err, req, res, next) => { 
+    let error = { ...err } //spread operator
     error.message = err.message
 
     // Log n console for Dev
