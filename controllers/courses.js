@@ -8,21 +8,18 @@ const Bootcamp = require('../models/Bootcamp');
 //@route:    Get /api/v1/bootcamps/:bootcampId/courses
 //@access:   Public
 exports.getCourses = asyncHandler(async (req, res, next) => {
-    let query;
-
+    
     if(req.params.bootcampId){ // Get courses of the bootcamp
+        // No need for advanced results
         console.log(req.params.bootcampId);
-        query = Course.find({ bootcamp: req.params.bootcampId })
-    }
-    else{ // Just get all courses
-        query = Course.find().populate({
-            path: 'bootcamp', // which field to use
-            select: 'name description'
-        })
-        //Populate === Joining with the other Realtion
+        const courses = await Course.find({ bootcamp: req.params.bootcampId })
+
+        return res.status(200).json({Success: true, count: courses.length, data: courses})
     }
 
-    const courses = await query
+    else{ // Just get all courses
+        res.status(200).json(res.advancedResults)
+    }
 
     res.status(200).json({Success: true, count: courses.length, data: courses})
 })
