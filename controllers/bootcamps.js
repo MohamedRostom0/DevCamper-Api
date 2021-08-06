@@ -165,7 +165,7 @@ exports.bootcampPhotoUpload = asyncHandler (async (req, res, next) => {
     }
 
     const file = req.files.file
-    
+
     //Make sure that the file is a photo
     if(!file.mimetype.startsWith('image')){
         return next(new ErrorResponce(`Please upload an image file`, 400))
@@ -177,8 +177,10 @@ exports.bootcampPhotoUpload = asyncHandler (async (req, res, next) => {
     }
 
     // Create custom file name
+    // old file.name = bootcamp.jpg *** To avoid same name of photos => change file name to a unique file name
     file.name = `photo_${bootcamp._id}${path.parse(file.name).ext}`
 
+    // Parameter 1: where to save the file
     file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async(err) => {
         if(err){
             console.console.error(err)
