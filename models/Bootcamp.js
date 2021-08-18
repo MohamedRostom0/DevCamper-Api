@@ -108,6 +108,12 @@ const BootcampSchema = new mongoose.Schema({
         default: false
     },
 
+    user: { // Relationship with User
+        type: mongoose.Schema.ObjectId,
+        ref: 'User', // Model that we are referencing
+        required: true // a course cannot exist without a bootcamp
+    },
+
     createdAt: {
         type: Date,
         default: Date.now

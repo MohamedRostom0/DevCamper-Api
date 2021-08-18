@@ -42,6 +42,12 @@ const CourseSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'Bootcamp',
         required: true // a course cannot exist without a bootcamp
+    },
+
+    user: { // Relationship with bootcamp
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: true // a course cannot exist without a User
     }
 })
 
