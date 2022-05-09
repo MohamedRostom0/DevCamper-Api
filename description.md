@@ -94,17 +94,7 @@ Create the backend for a bootcamp directory website. The frontend/UI will be cre
 ## Documentation
 - https://documenter.getpostman.com/view/13807708/UUxtEq87
 
-## Deployment (Digital Ocean)
-- Push to Github
-- Create a droplet - https://m.do.co/c/5424d440c63a
-- Clone repo on to server
-- Use PM2 process manager
-- Enable firewall (ufw) and open needed ports
-- Create an NGINX reverse proxy for port 80
-- Connect a domain name
-- Install an SSL using Let's Encrypt
-
-## Code Related Suggestions
+## Code Related Suggestions for the future
 - NPM scripts for dev and production env
 - Config file for important constants
 - Use controller methods with documented descriptions/routes
